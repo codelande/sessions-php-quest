@@ -1,3 +1,17 @@
+<?php session_start();
+
+
+if (isset($_GET['add_to_cart'])) {
+
+    $test = (int) $_GET["add_to_cart"];
+
+    $_SESSION['cart'][] = $test;
+}
+var_dump($_SESSION['cart']);
+
+
+?>
+
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
 <section class="cookies container-fluid">

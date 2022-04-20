@@ -1,4 +1,23 @@
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php';
+
+session_start();
+
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    header("Location: /");
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+    $_SESSION['user'] = $_POST['loginname'];
+
+    header("Location: /");
+
+    exit();
+}
+
+?>
+
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -11,9 +30,7 @@
                         <fieldset>
                             <div class="row">
                                 <div class="center-block">
-                                    <img class="profile-img"
-                                         src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                                         alt="">
+                                    <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -21,10 +38,9 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                              <i class="glyphicon glyphicon-user"></i>
+                                                <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="Username" name="loginname"
-                                                   type="text" autofocus>
+                                            <input class="form-control" placeholder="Username" name="loginname" type="text" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -36,7 +52,7 @@
                     </form>
                 </div>
                 <div class="panel-footer ">
-                    Don't have an account ? <a href="#" onClick="">Too bad !</a>
+                    Don't have an account ? <a href="" onClick="">Too bad !</a>
                 </div>
             </div>
         </div>
